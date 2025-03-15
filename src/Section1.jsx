@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './Section1_shapes.css'
+import React, { useState } from 'react';
+import './Section1_shapes.css';
 
 const message_list = [
     "hey",
@@ -10,46 +10,38 @@ const message_list = [
         ["WAKE UP", "jk"],
     ],
     "dogman",
-    ["im nervous", "WELL THEN WAKE UP!!"],
-    ["yeah, what's up?",
-        "that's good to hear",
-        "im doing good too"
+    "catman",
+    "bearman",
+    ["option 1?", "option 2"],
+    [
+        ["HELLO", "BYE"],
+        ["ROAR", "WOOF"],
     ],
-    ["no... sleeping emoji",
-        "WELL THEN WAKE UP!!",
-        "jk haha"
-    ],
-    "i've just been overthinking everything...",
-    "grad is coming up and i'm really scared",
-    ["yeah, me too",
-        ["i don't know if i picked the right major to study",
-            "yeah me too..."
-        ],
-        ["i don’t know what i’m gonna do afterwards",
-            "yeah me too..."
-        ],
-        ["i’m scared of losing you",
-            "aww, thanks :)",
-            "i don't want to lose you either"
-        ],
-        ["i'm gonna miss all my friends",
-            "me too!",
-            "i'm also not that good at keeping in touch..."
-        ]
-    ],
-    ["i'm not too worried",
-        "Really? Wow, you must have things sorted out huh",
-    ],
-    "ah, it’s getting late. I should probably try to sleep now",
-    "thanks for chatting with me, i really needed this"
-]
+];
 
 export function Section1() {
-    const [position, setPosition] = useState(2)
+    const [position, setPosition] = useState(2);
     const [messagesDisplayed, setMessagesDisplayed] = useState({
         "dog": true,
-        "cat": false,
-    })
+        "cat": true,
+    });
+
+    function addNextMessages(user_choice) {
+        const friend_messages = message_list[position + 1][user_choice];
+
+        for (let i = 0; i < friend_messages.length; i++) {
+            setMessagesDisplayed((prevState) => ({
+                ...prevState,
+                [friend_messages[i]]: true,
+            }));
+        }
+
+        let nextPosition = position + 1;
+        while (nextPosition < message_list.length && !Array.isArray(message_list[nextPosition])) {
+            nextPosition++;
+        }
+        setPosition(nextPosition); // Move to the next position
+    }
 
     return (
         <>
@@ -58,9 +50,12 @@ export function Section1() {
                     {key}: {value.toString()}
                 </div>
             ))}
-            {message_list[position].map((message, index) => (
-                <div key={index}>{message}</div>
-            ))}
+            {Array.isArray(message_list[position]) &&
+                message_list[position].map((message, index) => (
+                    <button key={index} onClick={() => addNextMessages(index)}>
+                        {message}
+                    </button>
+                ))}
         </>
-    )
+    );
 }
