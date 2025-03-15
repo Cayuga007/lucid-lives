@@ -3,14 +3,13 @@ import React, { useState, useRef, useEffect } from 'react';
 const Section1 = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [chatTitle, setChatTitle] = useState('Lucid Lives');
+  const [chatTitle, setChatTitle] = useState('Cupid');
   const messagesEndRef = useRef(null);
 
   // Initial messages for the chat
   useEffect(() => {
     const initialMessages = [
-      { text: 'hey', type: 'bot' },
-      { text: 'are you still up?', type: 'bot' }
+      { text: 'Hey', type: 'bot' },
     ];
     
     setMessages(initialMessages);
@@ -49,7 +48,7 @@ const Section1 = () => {
       setMessages(prev => [...prev, 
         { text: 'Wrong number?! Pfftt that\'s not possible', type: 'bot' },
         { text: 'You summoned me afterall...', type: 'bot' },
-        { text: 'You\'re the one playing this quiz on Valentine\'s Day!', type: 'bot' }
+        { text: 'You\'re the one playing this quiz!', type: 'bot' }
       ]);
       
       // Add next user option
@@ -161,13 +160,6 @@ const Section1 = () => {
         >
           Send
         </button>
-      </div>
-      
-      {/* Copyright notice */}
-      <div className="text-xs text-center p-2 text-gray-500">
-        all artwork is copyrighted. please don't use it without permission
-        <br />
-        © 2025 I-see What You Did There
       </div>
     </div>
   );
