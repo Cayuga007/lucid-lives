@@ -12,19 +12,19 @@ const current_career_questions = [
   "Is there a moment in your career that you wish had gone differently? What was the moment?",
   "Why does that moment stick out to you?",
   "What would you have done differently?",
-  "What can you change now to make sure that never happens again?",
+  "What can you change now to make sure that never happens again?"
 ];
 const romance_questions = [
   "Is there a person in your life that you are interested in?",
   "Why are you interested in this person?",
   "What is stopping you from taking action?",
-  "What can you change to make something happen?",
+  "What can you change to make something happen?"
 ];
 const friendship_questions = [
   "Is there a person in your life that you have disconnected from?",
   "What caused the two of you to disconnect?",
   "If the two of you reconnected, what kind of person would you want them to see you as?",
-  "What can you do to become that kind of person?",
+  "What can you do to become that kind of person?"
 ];
 
 export function Section3({ route_ }) {
@@ -53,23 +53,16 @@ export function Section3({ route_ }) {
 
   const submitAnswer = (e) => {
     e.preventDefault();
-    // Process the answer here if needed
-
-    // Clear the answer and go to the next question
     setAnswer("");
     setCurrentQuestion(currentQuestion + 1);
-
-    // If we've reached the end of the questions, you can redirect or show a completion message
   };
 
-  // If we've run out of questions, show a "completed" message or move on
   const questionText = routeQuestions[currentQuestion];
   const isComplete = !questionText;
 
   return (
-    <div className="section3-container">
+    <div className="section3-background">
       <div className="section3-box">
-
         {isComplete ? (
           <p>These are the things that you want to change. So why not change them? Believe in yourself.</p>
         ) : (

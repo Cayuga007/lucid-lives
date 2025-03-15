@@ -1,20 +1,25 @@
-/* Make sure html/body take full height so background covers entire screen */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.section3-background {
+    background: url('/blank.png') no-repeat center center fixed;
+    background-size: contain;
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  
-  /* Full-page background */
-  body {
-    /* If your file is in /public, this path is correct. Otherwise adjust. */
-    background: url('/sheep-bg1.png') no-repeat center center fixed;
-    background-size: contain; /* or "cover", "100% auto", etc. */
-    background-color: #000; /* fallback color behind the image */
+
+  .section3-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
   }
-  
-  /* Main container to center content */
   .section3-container {
     min-height: 100vh; 
     display: flex;
@@ -22,10 +27,9 @@ html, body {
     justify-content: center;
     align-items: center;
   }
-  
-  /* Card or box on top of the background */
+
   .section3-box {
-    background-color: rgba(255, 255, 255, 0.85); /* semi-transparent white */
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(4px);
     border-radius: 12px;
     padding: 2rem;
@@ -35,14 +39,14 @@ html, body {
     text-align: center;
   }
   
-  /* Title styling */
+
   .section3-title {
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     color: #333;
   }
   
-  /* Question text styling */
+
   .section3-question {
     font-size: 1.15rem;
     color: #333;
@@ -50,7 +54,7 @@ html, body {
     font-weight: 500;
   }
   
-  /* Form styling */
+
   .section3-form {
     display: flex;
     flex-direction: column;
@@ -79,8 +83,7 @@ html, body {
     outline: none;
     border-color: #4a90e2;
   }
-  
-  /* Button styling */
+
   .section3-button {
     margin-top: 1rem;
     padding: 0.75rem 2rem;

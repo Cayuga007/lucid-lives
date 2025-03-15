@@ -36,7 +36,7 @@ export function Section2({ route_ }) {
 
   const navigate = useNavigate();
 
-  const genAI = new GoogleGenerativeAI("AIzaSy...");
+  const genAI = new GoogleGenerativeAI("AIzaSyDd4Xdhi-1Bnd1m4VfzgeklFAHwiE_r2kM");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
   useEffect(() => {
@@ -101,7 +101,6 @@ export function Section2({ route_ }) {
       setCurrentQuestion(nextQuestion);
       setAnswer("");
     } else {
-      // All questions answered
       if (route === "career") {
         if (diffCareer > currCareer) {
           navigate("/Section3", { state: { route: "different_career" } });
