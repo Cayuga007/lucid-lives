@@ -18,6 +18,15 @@ const message_list = {
         "I'm so happy for you",
     ],
 }
+const message_list2 = [
+    "hey",
+    "how are you",
+    ["im good",
+        "that's good to hear",
+        "im doing good too"
+    ],
+    "im worried for the exam",
+]
 
 export function Section1_() {
     const [currentMessages_, setCurrentMessages] = useState({})
