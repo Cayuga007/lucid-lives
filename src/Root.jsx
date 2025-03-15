@@ -5,6 +5,7 @@ export function Root() {
         <>
             <label>Root</label>
             <Link to="/Section3">Section 3</Link>
+            <Link to="/Section1">Section 1</Link>
         </>
     )
 }
