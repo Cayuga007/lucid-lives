@@ -41,6 +41,7 @@ export function Section2() {
         const prompt = inputRef.current.value;
 
         const categorize = async (prompt) => {
+            const aiPrompt = "Here is the user's "
             const aiPrompt = "reply with poop if i say hello, otherwise say dog, me:" + prompt;
 
             try {
