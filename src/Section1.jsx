@@ -1,10 +1,52 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Section1_shapes.css';
 
+// TextBubble component
+export function TextBubble({ message} ) {
+    // Calculate width and height based on message length
+    const minWidth = 50; // Minimum width of the bubble
+    const maxWidth = 150; // Maximum width of the bubble
+    const minHeight = 50; // Minimum height of the bubble
+    const padding = 20; // Padding inside the bubble
+  
+    // Calculate dynamic width
+    const messageLength = message.length;
+    const width = Math.min(minWidth + messageLength * 8, maxWidth); // Adjust multiplier for sizing
+  
+    // Calculate dynamic height
+    const lineHeight = 24; // Approximate line height
+    const lines = Math.ceil((messageLength * 8) / width); // Estimate number of lines
+    const height = Math.max(minHeight, lines * lineHeight + padding);
+  
+    // Styles for the message bubble
+    const bubbleStyle = {
+      width: `${width}px`,
+      height: `${height}px`,
+      backgroundColor: '#007bff',
+      color: 'white',
+      borderRadius: '15px',
+    //padding: '10px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
+      wordWrap: 'break-word', // Ensure long words break into new lines
+    };
+  
+    return (
+      <div style={bubbleStyle}>
+        {message}
+      </div>
+    );
+  }
+
+
+  
+
 export function Section1() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [chatTitle, setChatTitle] = useState('LucidLives');
+  const [chatTitle, setChatTitle] = useState('Lucid Lives');
   const [currentOptions, setCurrentOptions] = useState([]);
   const [conversationStage, setConversationStage] = useState('initial');
   const messagesEndRef = useRef(null);
@@ -237,17 +279,31 @@ export function Section1() {
                 {chatTitle}
               </div>
 
-              {/* Chat messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-2">
+              {/* Chat messages - Updated to use TextBubble */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 {messages.map((message, index) => (
                   <div
                     key={index}
-                    className={`${message.type === 'user'
-                      ? 'bg-blue-200 ml-auto'
-                      : 'bg-gray-200 mr-auto'
-                      } rounded-lg p-3 max-w-xs break-words`}
+                    className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    {message.text}
+                    {message.type === 'user' ? (
+                      <TextBubble message={message.text} />
+                    ) : (
+                      <div 
+                        className="bg-gray-200 rounded-lg p-3 max-w-xs break-words"
+                        style={{
+                          minWidth: '50px',
+                          minHeight: '50px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.2)',
+                          wordWrap: 'break-word',
+                        }}
+                      >
+                        {message.text}
+                      </div>
+                    )}
                   </div>
                 ))}
                 <div ref={messagesEndRef} />
@@ -267,7 +323,7 @@ export function Section1() {
               </div>
 
               {/* Input area */}
-              <div className="p-2 border-t flex">
+              {/* <div className="p-2 border-t flex">
                 <input
                   type="text"
                   value={inputValue}
@@ -282,14 +338,14 @@ export function Section1() {
                 >
                   Send
                 </button>
-              </div>
+              </div> */}
 
-              Copyright notice
+              {/* Copyright notice
               <div className="text-xs text-center p-2 text-gray-500">
                 all artwork is copyrighted. please don't use it without permission
                 <br />
                 © 2025 I-see What You Did There
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
