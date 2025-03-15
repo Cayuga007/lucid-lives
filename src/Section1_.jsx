@@ -19,7 +19,7 @@ const message_list = {
     ],
 }
 
-export function Section1() {
+export function Section1_() {
     const [currentMessages_, setCurrentMessages] = useState({})
     const currentMessages = {
         "hello!": true, // True is friend
