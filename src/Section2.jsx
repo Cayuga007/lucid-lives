@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import "./Section2.css"; // Import the new CSS
 
 const route = "career";
 const careerQuestions = [
@@ -35,7 +36,7 @@ export function Section2({ route_ }) {
 
   const navigate = useNavigate();
 
-  const genAI = new GoogleGenerativeAI("AIzaSyAMXXAWbcURO3KB58f78hpgOOyg4toXgac");
+  const genAI = new GoogleGenerativeAI("AIzaSy...");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
   useEffect(() => {
@@ -57,7 +58,6 @@ export function Section2({ route_ }) {
     e.preventDefault();
 
     const categorize = async () => {
-      // Using the current question text for clarity in the prompt.
       const aiPrompt =
         "The question is: " +
         routeQuestions[currentQuestion] +
@@ -101,7 +101,7 @@ export function Section2({ route_ }) {
       setCurrentQuestion(nextQuestion);
       setAnswer("");
     } else {
-      // All questions answered, determine which category wins and redirect to Section3.
+      // All questions answered
       if (route === "career") {
         if (diffCareer > currCareer) {
           navigate("/Section3", { state: { route: "different_career" } });
@@ -119,18 +119,24 @@ export function Section2({ route_ }) {
   };
 
   return (
-    <>
-      <label>{routeQuestions[currentQuestion]}</label>
-      <form onSubmit={submitAnswer}>
-        <label>
-          Your response:
-          <input
-            type="text"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-          />
-        </label>
-      </form>
-    </>
+    <div className="section2-container">
+      <div className="section2-box">
+        <p className="section2-question">{routeQuestions[currentQuestion]}</p>
+        <form onSubmit={submitAnswer} className="section2-form">
+          <label className="section2-label">
+            Your response:
+            <input
+              type="text"
+              className="section2-input"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            />
+          </label>
+          <button type="submit" className="section2-button">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
