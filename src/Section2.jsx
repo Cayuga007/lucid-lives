@@ -41,8 +41,7 @@ export function Section2() {
         const prompt = inputRef.current.value;
 
         const categorize = async (prompt) => {
-            const aiPrompt = "Here is the user's "
-            const aiPrompt = "reply with poop if i say hello, otherwise say dog, me:" + prompt;
+            const aiPrompt = "The question is: " + question + " And here is the user's response: " + prompt + " Based on their reply, can you respond with either happy, sad, or mad?";
 
             try {
                 const result = await model.generateContent(aiPrompt);
