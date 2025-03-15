@@ -56,6 +56,7 @@ export function Section3({ route_ }) {
     const submitAnswer = (e) => {
         e.preventDefault()
         // Do something with the answer
+        setAnswer("");
         setCurrentQuestion(currentQuestion + 1)
         // If we've reached the end of the questions, go to section 4
     }

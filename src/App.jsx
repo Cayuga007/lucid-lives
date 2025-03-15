@@ -9,8 +9,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Root />} />
-          <Route path="/Section1" element={<Section3 />} />
-          <Route path="/Section2" element={<Section3 />} />
+          <Route path="/Section2" element={<Section2 />} />
           <Route path="/Section3" element={<Section3 />} />
         </Routes>
       </BrowserRouter>
