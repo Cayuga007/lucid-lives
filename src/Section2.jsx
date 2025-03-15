@@ -1,19 +1,15 @@
-import dotenv from "dotenv";
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-//dotenv.config();
 
 export function Section2() {
-    {  
 
-    }
-
-    const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+    const genAI = new GoogleGenerativeAI("AIzaSyCQ8QHQzPIZfn9IXZX_ePJoZzdrHiCpNH4");
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro"});
 
     const run = async () =>{
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-        const prompt = "tell me hello";
+        const prompt = "say poop";
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
