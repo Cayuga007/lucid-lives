@@ -2,7 +2,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useState } from "react";
 import React, { useRef } from 'react';
 
-export function Section2() {
+export function Section2({ route }) {
+    
 
     /*const careerQuestions = [
         "Can you describe your passion for your career?",
@@ -44,10 +45,10 @@ export function Section2() {
             const aiPrompt = "The question is: " + question + " And here is the user's response: " + prompt + " Based on their reply, can you respond with either happy, sad, or mad?";
 
             try {
-                const result = await model.generateContent(aiPrompt);
-                const response = await result.response;
-                const text = response.text();
-                setAiResponse(text);
+                // const result = await model.generateContent(aiPrompt);
+                // const response = await result.response;
+                // const text = response.text();
+                setAiResponse("Working");
             } catch (error) {
                 if (error.response && error.response.status === 429) {
                     console.error("too many requests, wait or check ur quota");
