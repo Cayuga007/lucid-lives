@@ -1,58 +1,56 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './Section1_shapes.css'
+import React, { useState } from 'react';
+import './Section1_shapes.css';
 
 const message_list = [
     "hey",
     "are you still up?",
-    ["yeah, what's up?",
-        "that's good to hear",
-        "im doing good too"
+    ["yeah, what's up?", "no sleeping emoji"],
+    [
+        ["im nervous", "can you talk to me"],
+        ["WAKE UP", "jk"],
     ],
-    ["no... sleeping emoji",
-        "WELL THEN WAKE UP!!",
-        "jk haha"
-    ],
-    "i've just been overthinking everything...",
-    "grad is coming up and i'm really scared",
-    ["yeah, me too",
-        ["i don't know if i picked the right major to study",
-            "yeah me too..."
-        ],
-        ["i don’t know what i’m gonna do afterwards",
-            "yeah me too..."
-        ],
-        ["i’m scared of losing you",
-            "aww, thanks :)",
-            "i don't want to lose you either"
-        ],
-        ["i'm gonna miss all my friends",
-            "me too!",
-            "i'm also not that good at keeping in touch..."
-        ]
-    ],
-    ["i'm not too worried",
-        "Really? Wow, you must have things sorted out huh",
-    ],
-    "ah, it’s getting late. I should probably try to sleep now",
-    "thanks for chatting with me, i really needed this"
-]
+    "dogman",
+];
 
-export function Section1_() {
-    const [position, setPosition] = useState(0)
+export function Section1() {
+    const [position, setPosition] = useState(2);
     const [messagesDisplayed, setMessagesDisplayed] = useState({
         "dog": true,
-        "cat": false
-    })
+        "cat": true,
+    });
 
-    useEffect(() => {
-        
-    }, [])
+    function addNextMessages(user_choice) {
+        const friend_messages = message_list[position + 1][user_choice];
+
+        for (let i = 0; i < friend_messages.length; i++) {
+            setMessagesDisplayed((prevState) => ({
+                ...prevState,
+                [friend_messages[i]]: true,
+            }));
+        }
+
+        // Find the next array in message_list and set position
+        let nextPosition = position + 1;
+        while (nextPosition < message_list.length && !Array.isArray(message_list[nextPosition])) {
+            nextPosition++;
+        }
+
+        setPosition(nextPosition); // Move to the next array in message_list
+    }
 
     return (
         <>
-            {messagesDisplayed.map((message, index) => {
-                <label>{message}</label>
-            })}
+            {Object.entries(messagesDisplayed).map(([key, value]) => (
+                <div key={key}>
+                    {key}: {value.toString()}
+                </div>
+            ))}
+            {Array.isArray(message_list[position]) &&
+                message_list[position].map((message, index) => (
+                    <button key={index} onClick={() => addNextMessages(index)}>
+                        {message}
+                    </button>
+                ))}
         </>
-    )
+    );
 }
