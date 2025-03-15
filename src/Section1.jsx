@@ -152,7 +152,7 @@ export function Section1() {
     // Process the selected option after a short delay
     setTimeout(() => {
       processSelectedOption(option);
-    }, 1000);
+    }, 3000);
   };
 
   // Process the selected option and continue conversation
