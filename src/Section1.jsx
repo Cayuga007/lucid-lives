@@ -1,37 +1,65 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Section1_shapes.css'
 
-const message_list = {
-    "intro": {
-        "friend_messages": [
-            "Hey, how are you?",
-            "Did you pass the exam?",
-            "I did not",
-        ],
-        "responses": {
-            "I passed": "response to option 1",
-            "I failed": "response to option 2"
-        }
-    },
-    "response to option 1": [
-        "Wow congrats!",
-        "I'm so happy for you",
+const message_list = [
+    "hey",
+    "are you still up?",
+    ["yeah, what's up?", "no sleeping emoji"],
+    [
+        ["im nervous", "can you talk to me"],
+        ["WAKE UP", "jk"],
     ],
-}
+    "dogman",
+    ["im nervous", "WELL THEN WAKE UP!!"],
+    ["yeah, what's up?",
+        "that's good to hear",
+        "im doing good too"
+    ],
+    ["no... sleeping emoji",
+        "WELL THEN WAKE UP!!",
+        "jk haha"
+    ],
+    "i've just been overthinking everything...",
+    "grad is coming up and i'm really scared",
+    ["yeah, me too",
+        ["i don't know if i picked the right major to study",
+            "yeah me too..."
+        ],
+        ["i don’t know what i’m gonna do afterwards",
+            "yeah me too..."
+        ],
+        ["i’m scared of losing you",
+            "aww, thanks :)",
+            "i don't want to lose you either"
+        ],
+        ["i'm gonna miss all my friends",
+            "me too!",
+            "i'm also not that good at keeping in touch..."
+        ]
+    ],
+    ["i'm not too worried",
+        "Really? Wow, you must have things sorted out huh",
+    ],
+    "ah, it’s getting late. I should probably try to sleep now",
+    "thanks for chatting with me, i really needed this"
+]
 
 export function Section1() {
-    const [currentMessages_, setCurrentMessages] = useState({})
-    const currentMessages = {
-        "hello!": true, // True is friend
-        "i hate you": false, // False is user
-    }
+    const [position, setPosition] = useState(2)
+    const [messagesDisplayed, setMessagesDisplayed] = useState({
+        "dog": true,
+        "cat": false,
+    })
 
     return (
         <>
-            {Object.entries(currentMessages).map(([key, value]) => (
-                    <li key={key.id}>
-                        {value ? <label>DOG</label> : <label>CAT</label>}
-                    </li>
+            {Object.entries(messagesDisplayed).map(([key, value]) => (
+                <div key={key}>
+                    {key}: {value.toString()}
+                </div>
+            ))}
+            {message_list[position].map((message, index) => (
+                <div key={index}>{message}</div>
             ))}
         </>
     )
