@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./Section3.css"; // Import the new CSS file
+import "./Section3.css";
 
-const route = "different_career"; // This is a placeholder for the actual route
+const route = "different_career";
 const different_career_questions = [
   "If you could restart life, what kind of career would you follow?",
   "What friends and family would you be surrounded by?",

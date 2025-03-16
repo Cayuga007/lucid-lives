@@ -10,6 +10,8 @@ html, body {
     background: url('/sheep-bg.png') no-repeat center center fixed;
     background-size: contain;
     background-color: #000;
+    background-size: 100% 100%;
+     min-height: 100vh;
   }
   
 
